@@ -1,0 +1,298 @@
+{
+    "name": "Artifacts Service API",
+    "slug": "",
+    "api_id": "4c0cb286-0572-11e6-9f55-28d24403bb05",
+    "org_id": "mender.io",
+    "use_keyless": true,
+    "use_oauth2": false,
+    "oauth_meta": {
+        "allowed_access_types": null,
+        "allowed_authorize_types": null,
+        "auth_login_redirect": ""
+    },
+    "auth": {
+        "use_param": false,
+        "param_name": "",
+        "use_cookie": false,
+        "cookie_name": "",
+        "auth_header_name": ""
+    },
+    "use_basic_auth": false,
+    "enable_jwt": false,
+    "jwt_signing_method": "",
+    "jwt_source": "",
+    "jwt_identity_base_field": "",
+    "jwt_policy_field_name": "",
+    "notifications": {
+        "shared_secret": "",
+        "oauth_on_keychange_url": ""
+    },
+    "enable_signature_checking": false,
+    "hmac_allowed_clock_skew": 0,
+    "definition": {
+        "location": "header",
+        "key": "version"
+    },
+    "version_data": {
+        "not_versioned": true,
+        "versions": {
+            "0.0.1": {
+                "name": "0.0.1",
+                "expires": "",
+                "paths": {
+                    "ignored": null,
+                    "white_list": null,
+                    "black_list": null
+                },
+                "use_extended_paths": true,
+                "extended_paths": {
+                    "ignored": null,
+                    "white_list": [
+                        {
+                            "path": "/images/{id}",
+                            "method_actions": {
+                                "DELETE": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                },
+                                "GET": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                },
+                                "PUT": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                }
+                            }
+                        },
+                        {
+                            "path": "/deployments/{deployment_id}/devices",
+                            "method_actions": {
+                                "GET": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                }
+                            }
+                        },
+                        {
+                            "path": "/images",
+                            "method_actions": {
+                                "GET": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                },
+                                "POST": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                }
+                            }
+                        },
+                        {
+                            "path": "/images/{id}/upload",
+                            "method_actions": {
+                                "GET": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                }
+                            }
+                        },
+                        {
+                            "path": "/deployments/{deployment_id}/devices/{device_id}/log",
+                            "method_actions": {
+                                "GET": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                }
+                            }
+                        },
+                        {
+                            "path": "/devices/{id}/update",
+                            "method_actions": {
+                                "GET": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                }
+                            }
+                        },
+                        {
+                            "path": "/images/{id}/download",
+                            "method_actions": {
+                                "GET": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                }
+                            }
+                        },
+                        {
+                            "path": "/deployments",
+                            "method_actions": {
+                                "GET": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                },
+                                "POST": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                }
+                            }
+                        },
+                        {
+                            "path": "/deployments/{deployment_id}/statistics",
+                            "method_actions": {
+                                "GET": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                }
+                            }
+                        },
+                        {
+                            "path": "/deployments/{id}",
+                            "method_actions": {
+                                "DELETE": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                },
+                                "GET": {
+                                    "action": "no_action",
+                                    "code": 0,
+                                    "data": "",
+                                    "headers": null
+                                }
+                            }
+                        }
+                    ],
+                    "black_list": null,
+                    "cache": null,
+                    "transform": null,
+                    "transform_response": null,
+                    "transform_headers": null,
+                    "transform_response_headers": null,
+                    "hard_timeouts": null,
+                    "circuit_breakers": null,
+                    "url_rewrites": null,
+                    "virtual": null,
+                    "size_limits": null
+                },
+                "global_headers": null,
+                "global_headers_remove": null,
+                "global_size_limit": 0,
+                "override_target": ""
+            }
+        }
+    },
+    "uptime_tests": {
+        "check_list": null,
+        "config": {
+            "expire_utime_after": 0,
+            "service_discovery": {
+                "use_discovery_service": false,
+                "query_endpoint": "",
+                "use_nested_query": false,
+                "parent_data_path": "",
+                "data_path": "",
+                "port_data_path": "",
+                "target_path": "",
+                "use_target_list": false,
+                "cache_timeout": 0,
+                "endpoint_returns_list": false
+            },
+            "recheck_wait": 0
+        }
+    },
+    "proxy": {
+        "preserve_host_header": false,
+        "listen_path": "/deployments/",
+        "target_url": "http://mender-deployments:8080/api/0.0.1/",
+        "strip_listen_path": true,
+        "enable_load_balancing": false,
+        "target_list": null,
+        "check_host_against_uptime_tests": false,
+        "service_discovery": {
+            "use_discovery_service": false,
+            "query_endpoint": "",
+            "use_nested_query": false,
+            "parent_data_path": "",
+            "data_path": "",
+            "port_data_path": "",
+            "target_path": "",
+            "use_target_list": false,
+            "cache_timeout": 0,
+            "endpoint_returns_list": false
+        }
+    },
+    "custom_middleware": {
+        "pre": null,
+        "post": null,
+        "response": null
+    },
+    "cache_options": {
+        "cache_timeout": 0,
+        "enable_cache": false,
+        "cache_all_safe_requests": false,
+        "cache_response_codes": null,
+        "enable_upstream_cache_control": false
+    },
+    "session_lifetime": 0,
+    "active": true,
+    "auth_provider": {
+        "name": "",
+        "storage_engine": "",
+        "meta": null
+    },
+    "session_provider": {
+        "name": "",
+        "storage_engine": "",
+        "meta": null
+    },
+    "event_handlers": {
+        "events": null
+    },
+    "enable_batch_request_support": false,
+    "enable_ip_whitelisting": false,
+    "allowed_ips": null,
+    "dont_set_quota_on_create": false,
+    "expire_analytics_after": 0,
+    "response_processors": null,
+    "CORS": {
+        "enable": false,
+        "allowed_origins": null,
+        "allowed_methods": null,
+        "allowed_headers": null,
+        "exposed_headers": null,
+        "allow_credentials": false,
+        "max_age": 0,
+        "options_passthrough": false,
+        "debug": false
+    },
+    "domain": "",
+    "do_not_track": false,
+    "tags": null
+}
