@@ -1,6 +1,7 @@
 # API Gateway
 
-Dockerfile for API gateway image.
+Dockerfile for API gateway image based on Tyk.io
+`tykio/tyk-gateway:v2.0` image.
 
 # Configuration
 
