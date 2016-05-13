@@ -139,7 +139,17 @@
     "allowed_ips": null,
     "dont_set_quota_on_create": false,
     "expire_analytics_after": 0,
-    "response_processors": null,
+    "response_processors": [
+        {
+            "name": "header_transform",
+            "options": {
+                "rev_proxy_header_cleanup": {
+                    "headers": ["Link", "Location"],
+                    "target_host": "http://gateway:8080"
+                }
+            }
+        }
+    ],
     "CORS": {
         "enable": false,
         "allowed_origins": null,
