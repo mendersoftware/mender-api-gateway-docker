@@ -1,4 +1,4 @@
-FROM tykio/tyk-gateway:v2.0
+FROM tykio/tyk-gateway:v2.1.0.2
 
 COPY tyk.conf /opt/tyk-gateway/tyk.conf
 
