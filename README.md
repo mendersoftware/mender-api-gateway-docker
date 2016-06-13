@@ -37,7 +37,7 @@ tyk --import-swagger <path-to-api-json> \
 
 The definition file was manually updated to set `"listen_path":
 "/deployments/"`. The API requests coming to
-http://<tyk-host>:<listen-port>/deployments/ will be redirected to
+http://<tyk-host>:<listen-port>/deployments/api/0.0.1/ will be redirected to
 http://mender-deployments:9999/api/0.0.1/
 
 ### Generating API definitions
