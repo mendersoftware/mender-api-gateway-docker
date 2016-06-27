@@ -88,7 +88,7 @@
     },
     "proxy": {
         "preserve_host_header": false,
-        "listen_path": "/deployments/api/0.0.1/",
+        "listen_path": "/api/devices/0.1/deployments/",
         "target_url": "http://mender-deployments:8080/api/0.0.1/",
         "strip_listen_path": true,
         "enable_load_balancing": false,
