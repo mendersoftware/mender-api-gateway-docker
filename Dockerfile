@@ -16,6 +16,9 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 
 EXPOSE 80 443
 
+COPY ./cert/cert.pem /var/www/mendersoftware/cert/cert.pem
+COPY ./cert/key.pem /var/www/mendersoftware/cert/key.pem
+
 CMD ["nginx", "-g", "daemon off;"]
 
 COPY nginx.conf /etc/nginx/nginx.conf
