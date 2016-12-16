@@ -1,4 +1,4 @@
-FROM openresty/openresty:latest
+FROM openresty/openresty:alpine
 
 
 # forward request and error logs to docker log collector
