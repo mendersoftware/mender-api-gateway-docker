@@ -8,9 +8,6 @@ RUN mkdir -p /var/log/nginx && \
 
 EXPOSE 443
 
-COPY ./cert/cert.pem /var/www/mendersoftware/cert/cert.pem
-COPY ./cert/key.pem /var/www/mendersoftware/cert/key.pem
-
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 
 COPY entrypoint.sh /entrypoint.sh
