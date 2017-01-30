@@ -1,7 +1,7 @@
 #!/bin/sh
 
-CERT_PATH=/var/www/mendersoftware/cert/cert.pem
-KEY_PATH=/var/www/mendersoftware/cert/key.pem
+CERT_PATH=/var/www/mendersoftware/cert/cert.crt
+KEY_PATH=/var/www/mendersoftware/cert/private.key
 
 waserr=0
 for f in $CERT_PATH $KEY_PATH; do
