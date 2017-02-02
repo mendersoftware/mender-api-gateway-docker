@@ -18,18 +18,6 @@ and compiled manually, since `apk` doesn't provide them either.
 Debian has a very convenient package `nginx-extras` with a lot of useful extensions
 prebuilt, so this distro was used instead.
 
-### Port mapping
-When run inside a container, nginx does not know about the external port mappings
-assigned by Docker. The mapped port number is therefore passed via the `MAPPED_PORT`
-environment variable, so that URLs can be handled and translated correctly.
-
-The only port currently supported is 80, so this is what `MAPPED_PORT` points to.
-In the near future, all http communication will be disabled, so this will be
-moved to 443.
-
-The mapping problem can be solved with a more sophisticated approach (mounting docker's
-daemon socket + introspection), but the simplest solution was selected for now.
-
 ## nginx.conf
 
 This is the single place where proxying, authentication and URL rewriting happens.
