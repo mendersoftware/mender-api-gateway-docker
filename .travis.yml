@@ -25,7 +25,12 @@ before_script:
     # Get last remaining tags, if any.
     - git fetch --tags origin
 
+    - git clone git://github.com/mendersoftware/mendertesting
+
 script:
+    # Check commit compliance.
+    - mendertesting/check_commits.sh
+
     # Build docker image from docker file
     - sudo docker build -t $DOCKER_REPOSITORY .
 
