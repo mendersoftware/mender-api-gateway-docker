@@ -17,10 +17,10 @@ if [ "$waserr" = "1" ]; then
 fi
 
 if [ -n "$ALLOWED_HOSTS" ]; then
-    sed -i -e "s/[@]ALLOWED_HOSTS[@]/$ALLOWED_HOSTS/" /usr/local/openresty/nginx/conf/nginx.conf
+    sed -i -e "s/[@]ALLOWED_HOSTS[@]/$ALLOWED_HOSTS/" /etc/nginx/nginx.conf
 else
    echo "ALLOWED_HOSTS undefined, exiting"
    exit 1
 fi
 
-exec /usr/local/openresty/bin/openresty -g "daemon off;" $*
+exec nginx -g "daemon off;" $*
