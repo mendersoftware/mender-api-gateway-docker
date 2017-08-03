@@ -1,14 +1,8 @@
-FROM openresty/openresty:alpine
-
-
-# forward request and error logs to docker log collector
-RUN mkdir -p /var/log/nginx && \
-    ln -sf /dev/stdout /var/log/nginx/access.log && \
-    ln -sf /dev/stderr /var/log/nginx/error.log
+FROM nginx:alpine-1.13.1
 
 EXPOSE 443
 
-COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY entrypoint.sh /entrypoint.sh
 
