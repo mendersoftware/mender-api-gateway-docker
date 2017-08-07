@@ -1,0 +1,21 @@
+#!/bin/sh
+
+NAMES="$*"
+
+if [ -z "$NAMES" ]; then
+   echo "NAMES undefined, exiting"
+   exit 1
+fi
+
+while true; do
+    dig $NAMES |grep -v -e '^;' -v -e '^$' -v -e '^\.' > /tmp/addrs.new
+    if test -e /tmp/addrs; then
+         if ! cmp /tmp/addrs.new /tmp/addrs; then
+            /usr/local/openresty/bin/openresty -s reload
+            echo '-- reload'
+        fi
+    fi
+    mv /tmp/addrs.new /tmp/addrs
+    sleep 10
+done
+
