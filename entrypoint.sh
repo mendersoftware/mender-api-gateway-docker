@@ -23,4 +23,10 @@ else
    exit 1
 fi
 
+DNS_NAMES=${DNS_NAMES:-mender-useradm mender-inventory mender-deployments mender-device-auth mender-device-adm}
+
+echo "setting up automatic reload on host IP address changes for DNS names: $DNS_NAMES"
+
+./reload-when-hosts-changed $DNS_NAMES &
+
 exec /usr/local/openresty/bin/openresty -g "daemon off;" $*
