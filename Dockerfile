@@ -13,6 +13,12 @@ EXPOSE 443
 
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 
+# copy optionally included config files
+# create placeholder dir where they'll be linked
+COPY tenantadm.nginx.conf /usr/local/openresty/nginx/conf/tenantadm.nginx.conf
+
+RUN mkdir -p /usr/local/openresty/nginx/conf/optional/endpoints
+
 COPY entrypoint.sh /entrypoint.sh
 
 COPY reload-when-hosts-changed /reload-when-hosts-changed
