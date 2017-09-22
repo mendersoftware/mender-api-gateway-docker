@@ -23,6 +23,13 @@ else
    exit 1
 fi
 
+# Disabled by default
+if [ -n "$CACHE_UI" ]; then
+    sed -i -e "s/[@]CACHE_UI[@]/$CACHE_UI/" /usr/local/openresty/nginx/conf/nginx.conf
+else
+    sed -i -e "s/[@]CACHE_UI[@]/off/" /usr/local/openresty/nginx/conf/nginx.conf
+fi
+
 if [ -n "$HAVE_MULTITENANT" ]; then
     ln -sf /usr/local/openresty/nginx/conf/tenantadm.nginx.conf /usr/local/openresty/nginx/conf/optional/endpoints/tenantadm.nginx.conf
 fi
