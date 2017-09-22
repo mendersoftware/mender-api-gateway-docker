@@ -23,4 +23,6 @@ COPY entrypoint.sh /entrypoint.sh
 
 COPY reload-when-hosts-changed /reload-when-hosts-changed
 
+RUN mkdir -p /data/nginx/cache/ui
+
 ENTRYPOINT ["/entrypoint.sh"]
