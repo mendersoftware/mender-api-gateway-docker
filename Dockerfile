@@ -9,7 +9,7 @@ RUN mkdir -p /var/log/nginx && \
 RUN apk update && \
 apk add bind-tools
 
-EXPOSE 443
+EXPOSE 80 443
 
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 
