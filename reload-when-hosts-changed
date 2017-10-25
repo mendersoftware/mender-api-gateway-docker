@@ -10,7 +10,7 @@ fi
 while true; do
     dig $NAMES |grep -v -e '^;' -v -e '^$' -v -e '^\.' > /tmp/addrs.new
     if test -e /tmp/addrs; then
-         if ! cmp /tmp/addrs.new /tmp/addrs; then
+         if ! cmp -s /tmp/addrs.new /tmp/addrs; then
             /usr/local/openresty/bin/openresty -s reload
             echo '-- reload'
         fi
