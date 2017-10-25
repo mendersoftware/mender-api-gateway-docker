@@ -45,7 +45,8 @@ else
 fi
 
 if [ -n "$HAVE_MULTITENANT" ]; then
-    ln -sf /usr/local/openresty/nginx/conf/tenantadm.nginx.conf /usr/local/openresty/nginx/conf/optional/endpoints/tenantadm.nginx.conf
+    ln -sf /usr/local/openresty/nginx/conf/tenantadm.nginx.conf \
+       /usr/local/openresty/nginx/conf/optional/endpoints/tenantadm.nginx.conf
 fi
 
 DNS_NAMES=${DNS_NAMES:-mender-useradm mender-inventory mender-deployments \
