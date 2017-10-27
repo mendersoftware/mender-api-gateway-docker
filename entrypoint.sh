@@ -24,10 +24,24 @@ else
 fi
 
 # Disabled by default
-if [ -n "$CACHE_UI" ]; then
-    sed -i -e "s/[@]CACHE_UI[@]/$CACHE_UI/" /usr/local/openresty/nginx/conf/nginx.conf
+if [ -n "$CACHE_UI_BROWSER_PERIOD" ]; then
+    sed -i -e "s/[@]CACHE_UI_BROWSER_PERIOD[@]/$CACHE_UI_BROWSER_PERIOD/" /usr/local/openresty/nginx/conf/nginx.conf
 else
-    sed -i -e "s/[@]CACHE_UI[@]/off/" /usr/local/openresty/nginx/conf/nginx.conf
+    sed -i -e "s/[@]CACHE_UI_BROWSER_PERIOD[@]/off/" /usr/local/openresty/nginx/conf/nginx.conf
+fi
+
+# Disabled by default
+if [ -n "$CACHE_UI_SUCCESS_PERIOD" ]; then
+    sed -i -e "s/[@]CACHE_UI_SUCCESS_PERIOD[@]/$CACHE_UI_SUCCESS_PERIOD/" /usr/local/openresty/nginx/conf/nginx.conf
+else
+    sed -i -e "s/[@]CACHE_UI_SUCCESS_PERIOD[@]/0s/" /usr/local/openresty/nginx/conf/nginx.conf
+fi
+
+# Disabled by default
+if [ -n "$CACHE_UI_FAILUE_PERIOD" ]; then
+    sed -i -e "s/[@]CACHE_UI_FAILURE_PERIOD[@]/$CACHE_UI_FAILURE_PERIOD/" /usr/local/openresty/nginx/conf/nginx.conf
+else
+    sed -i -e "s/[@]CACHE_UI_FAILURE_PERIOD[@]/0s/" /usr/local/openresty/nginx/conf/nginx.conf
 fi
 
 if [ -n "$HAVE_MULTITENANT" ]; then
