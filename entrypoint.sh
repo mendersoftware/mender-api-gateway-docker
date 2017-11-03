@@ -45,12 +45,15 @@ else
 fi
 
 if [ -n "$HAVE_MULTITENANT" ]; then
-    ln -sf /usr/local/openresty/nginx/conf/tenantadm.nginx.conf /usr/local/openresty/nginx/conf/optional/endpoints/tenantadm.nginx.conf
+    ln -sf /usr/local/openresty/nginx/conf/tenantadm.nginx.conf \
+       /usr/local/openresty/nginx/conf/optional/endpoints/tenantadm.nginx.conf
 fi
 
-DNS_NAMES=${DNS_NAMES:-mender-useradm mender-inventory mender-deployments mender-device-auth mender-device-adm}
+DNS_NAMES=${DNS_NAMES:-mender-useradm mender-inventory mender-deployments \
+                                      mender-device-auth mender-device-adm \
+                                      mender-gui}
 
-echo "setting up automatic reload on host IP address changes for DNS names: $DNS_NAMES"
+echo "setting up automatic reload on host IP address changes for DNS names: $(echo $DNS_NAMES | tr -s " ")"
 
 ./reload-when-hosts-changed $DNS_NAMES &
 
