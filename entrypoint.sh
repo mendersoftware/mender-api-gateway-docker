@@ -61,6 +61,7 @@ if [ -n "$RATE_LIMIT_GLOBAL_RATE" ] && [ $RATE_LIMIT_GLOBAL_RATE -gt 0 ]; then
 else
     sed -i -e "/[@]RATE_LIMIT_GLOBAL_RATE[@]/d" /usr/local/openresty/nginx/conf/nginx.conf
     sed -i -e "/[@]RATE_LIMIT_GLOBAL_BURST[@]/d" /usr/local/openresty/nginx/conf/nginx.conf
+    sed -i -e "/limit_req_status/d" /usr/local/openresty/nginx/conf/nginx.conf
 fi
 
 DNS_NAMES=${DNS_NAMES:-mender-useradm mender-inventory mender-deployments \
