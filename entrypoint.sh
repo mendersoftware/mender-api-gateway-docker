@@ -18,6 +18,10 @@ fi
 
 if [ -n "$ALLOWED_HOSTS" ]; then
     sed -i -e "s/[@]ALLOWED_HOSTS[@]/$ALLOWED_HOSTS/" /usr/local/openresty/nginx/conf/nginx.conf
+
+    # generate ORIGIN whitelist
+    hosts=$(echo $ALLOWED_HOSTS | sed 's/ \{1,\}/|/g' | sed 's/[.]\{1,\}/\\\\\\./g')
+    sed -i -e "s/[@]ALLOWED_ORIGIN_HOSTS[@]/$hosts/" /usr/local/openresty/nginx/conf/nginx.conf
 else
    echo "ALLOWED_HOSTS undefined, exiting"
    exit 1
