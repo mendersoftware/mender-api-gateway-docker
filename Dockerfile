@@ -1,5 +1,4 @@
-FROM openresty/openresty:alpine
-
+FROM openresty/openresty:1.13.6.2-0-alpine
 
 # forward request and error logs to docker log collector
 RUN mkdir -p /var/log/nginx && \
