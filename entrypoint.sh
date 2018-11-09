@@ -68,6 +68,13 @@ else
     sed -i -e "/limit_req_status/d" /usr/local/openresty/nginx/conf/nginx.conf
 fi
 
+# Enabling access logs json format - disabled by default
+if [ -n "$IS_LOGS_FORMAT_JSON" ] && [ "$IS_LOGS_FORMAT_JSON" = "true" ]; then
+    sed -i -e "s/[@]LOGS_FORMAT[@]/access_log_json/g" /usr/local/openresty/nginx/conf/nginx.conf
+else
+    sed -i -e "s/[@]LOGS_FORMAT[@]/main/g" /usr/local/openresty/nginx/conf/nginx.conf
+fi
+
 DNS_NAMES=${DNS_NAMES:-mender-useradm mender-inventory mender-deployments \
                                       mender-device-auth mender-device-adm \
                                       mender-gui}
