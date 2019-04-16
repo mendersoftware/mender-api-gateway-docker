@@ -75,6 +75,13 @@ else
     sed -i -e "s/[@]LOGS_FORMAT[@]/main/g" /usr/local/openresty/nginx/conf/nginx.conf
 fi
 
+# HTTP Strict Transport Security max-age - 2yrs by default
+if [ -n "$HSTS_MAX_AGE" ]; then
+    sed -i -e "s/[@]HSTS_MAX_AGE[@]/$HSTS_MAX_AGE/" /usr/local/openresty/nginx/conf/nginx.conf
+else
+    sed -i -e "s/[@]HSTS_MAX_AGE[@]/63072000/" /usr/local/openresty/nginx/conf/nginx.conf
+fi
+
 DNS_NAMES=${DNS_NAMES:-mender-useradm mender-inventory mender-deployments \
                                       mender-device-auth mender-device-adm \
                                       mender-gui}
