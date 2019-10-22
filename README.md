@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mendersoftware/mender-api-gateway-docker.svg?branch=master)](https://travis-ci.org/mendersoftware/mender-api-gateway-docker)
+[![Build Status](https://gitlab.com/Northern.tech/Mender/mender-api-gateway-docker/badges/master/pipeline.svg)](https://gitlab.com/Northern.tech/Mender/mender-api-gateway-docker/pipelines)
 [![Docker pulls](https://img.shields.io/docker/pulls/mendersoftware/api-gateway.svg?maxAge=3600)](https://hub.docker.com/r/mendersoftware/api-gateway/)
 
 Mender API Gateway
