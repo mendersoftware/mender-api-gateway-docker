@@ -88,6 +88,8 @@ DNS_NAMES=${DNS_NAMES:-mender-useradm mender-inventory mender-deployments \
 
 echo "setting up automatic reload on host IP address changes for DNS names: $(echo $DNS_NAMES | tr -s " ")"
 
+./wait-for-all-dns
+
 ./reload-when-hosts-changed $DNS_NAMES &
 
 exec /usr/local/openresty/bin/openresty -g "daemon off;" $*

@@ -6,7 +6,7 @@ RUN mkdir -p /var/log/nginx && \
     ln -sf /dev/stderr /var/log/nginx/error.log
 
 RUN apk update && \
-apk add bind-tools curl
+apk add bind-tools curl bash
 
 EXPOSE 443
 

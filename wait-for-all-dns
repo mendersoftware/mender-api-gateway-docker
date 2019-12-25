@@ -1,0 +1,16 @@
+#!/bin/bash
+
+services=`cat /usr/local/openresty/nginx/conf/nginx.conf | sed -e 's/^[ ]*//g' | grep "proxy_pass " | cut -f2 -d: | sed -e 's|//||g' | uniq`
+
+rc=1;
+i=0;
+while [ $rc != 0 ]; do
+ echo "`date` checking for DNS response for all: $services.";
+ rc=0;
+ for n in $services; do
+  host $n || rc=1;
+ done;
+ let i++;
+ sleep 4;
+done;
+
