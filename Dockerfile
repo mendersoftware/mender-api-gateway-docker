@@ -19,6 +19,7 @@ COPY tenantadm.nginx.conf /usr/local/openresty/nginx/conf/tenantadm.nginx.conf
 RUN mkdir -p /usr/local/openresty/nginx/conf/optional/endpoints
 
 COPY entrypoint.sh /entrypoint.sh
+COPY wait-for-all-dns /wait-for-all-dns
 
 COPY reload-when-hosts-changed /reload-when-hosts-changed
 
