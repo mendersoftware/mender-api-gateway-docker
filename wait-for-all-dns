@@ -4,13 +4,16 @@ services=`cat /usr/local/openresty/nginx/conf/nginx.conf | sed -e 's/^[ ]*//g' |
 
 rc=1;
 i=0;
+MAX_TRIES=128
 while [ $rc != 0 ]; do
- echo "`date` checking for DNS response for all: $services.";
+ echo "`date` $0 ($MAX_TRIES) checking for DNS response for all: $services.";
  rc=0;
  for n in $services; do
   host $n || rc=1;
  done;
  let i++;
  sleep 4;
+ let MAX_TRIES--;
+ [ $MAX_TRIES -lt 1 ] && { echo "`date` $0 after all retries we cant get all services. exiting."; exit 0; };
 done;
 
