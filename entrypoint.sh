@@ -88,7 +88,7 @@ DNS_NAMES=${DNS_NAMES:-mender-useradm mender-inventory mender-deployments \
 
 echo "setting up automatic reload on host IP address changes for DNS names: $(echo $DNS_NAMES | tr -s " ")"
 
-./wait-for-all-dns
+[ "$DOWNSTREAM_NO_WAIT" == "" ] || ./wait-for-all-dns
 
 ./reload-when-hosts-changed $DNS_NAMES &
 
