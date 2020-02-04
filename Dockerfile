@@ -8,9 +8,13 @@ RUN mkdir -p /var/log/nginx && \
 RUN apk update && \
 apk add bind-tools
 
+EXPOSE 80
 EXPOSE 443
 
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+COPY common.nginx.conf /usr/local/openresty/nginx/conf/common.nginx.conf
+COPY ssl.nginx.conf /usr/local/openresty/nginx/conf/ssl.nginx.conf
+COPY non-ssl.nginx.conf /usr/local/openresty/nginx/conf/non-ssl.nginx.conf
 
 # copy optionally included config files
 # create placeholder dir where they'll be linked
