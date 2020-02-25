@@ -14,7 +14,7 @@ and comprises several repositories.
 
 The API Gateway serves as an entrypoint for all HTTP communication with Mender. Its main responsibility is the proxying of requests to Mender services, while rewriting URLs from a public API scheme to an internal one. The gateway also enforces authentication upon every request.
 
-![Mender logo](https://mender.io/user/pages/04.resources/_logos/logoS.png)
+![Mender logo](https://mender.io/user/pages/04.resources/logos/logoS.png)
 
 
 ## Getting started
