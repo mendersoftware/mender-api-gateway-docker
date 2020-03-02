@@ -1,65 +1,13 @@
-image: docker:git
+variables:
+  DOCKER_REPOSITORY: mendersoftware/api-gateway
 
 stages:
   - test
   - build
   - publish
 
-before_script:
-  - export DOCKER_REPOSITORY="mendersoftware/api-gateway"
-  - export DOCKER_TAG=${CI_COMMIT_REF_SLUG:-master}
-  - export SERVICE_IMAGE=$DOCKER_REPOSITORY:$DOCKER_TAG
-  - export COMMIT_TAG="$CI_COMMIT_REF_SLUG"_"$CI_COMMIT_SHA";
-  - export GIT_REF=${CI_COMMIT_REF_NAME}
-  - export GIT_COMMIT=$(CI_COMMIT_SHORT_SHA)
-
-build:
-  stage: build
-  services:
-    - docker:dind
-  script:
-    - docker build
-      -t $SERVICE_IMAGE
-      .
-    - docker save $SERVICE_IMAGE > image.tar
-  artifacts:
-    expire_in: 2w
-    paths:
-      - image.tar
-  tags:
-    - docker
-
-test:static:
-  stage: test
-  before_script:
-    - apk add --no-cache bash
-    # Rename the branch we're on, so that it's not in the way for the
-    # subsequent fetch. It's ok if this fails, it just means we're not on any
-    # branch.
-    - git branch -m temp-branch || true
-    # Git trick: Fetch directly into our local branches instead of remote
-    # branches.
-    - git fetch origin 'refs/heads/*:refs/heads/*'
-    # Get last remaining tags, if any.
-    - git fetch --tags origin
-    - git clone http://github.com/mendersoftware/mendertesting
-  script:
-    - mendertesting/check_commits.sh
-
-publish:
-  stage: publish
-  services:
-    - docker:dind
-  dependencies:
-    - build
-  script:
-    - docker load -i image.tar
-    - docker tag $SERVICE_IMAGE $DOCKER_REPOSITORY:$COMMIT_TAG
-    - docker tag $SERVICE_IMAGE $DOCKER_REPOSITORY:$CI_COMMIT_REF_SLUG
-    - echo -n $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin
-    - docker push $DOCKER_REPOSITORY:$COMMIT_TAG
-    - docker push $SERVICE_IMAGE
-  only:
-    - /^(master|[0-9]+\.[0-9]+\.x)$/
-  tags:
-    - docker
+include:
+  - project: 'Northern.tech/Mender/mendertesting'
+    file: '.gitlab-ci-check-commits.yml'
+  - project: 'Northern.tech/Mender/mendertesting'
+    file: '.gitlab-ci-check-docker-build.yml'
