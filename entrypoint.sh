@@ -30,10 +30,6 @@ sed -i -e "s/[@]INCLUDE_SERVER_BLOCKS[@]/include \/usr\/local\/openresty\/nginx\
 if [ -n "$ALLOWED_HOSTS" ]; then
     sed -i -e "s/[@]ALLOWED_HOSTS[@]/$ALLOWED_HOSTS/" /usr/local/openresty/nginx/conf/ssl.nginx.conf
     sed -i -e "s/[@]ALLOWED_HOSTS[@]/$ALLOWED_HOSTS/" /usr/local/openresty/nginx/conf/non-ssl.nginx.conf
-
-    # generate ORIGIN whitelist
-    hosts=$(echo $ALLOWED_HOSTS | sed 's/ \{1,\}/|/g' | sed 's/[.]\{1,\}/\\\\\\./g')
-    sed -i -e "s/[@]ALLOWED_ORIGIN_HOSTS[@]/$hosts/" /usr/local/openresty/nginx/conf/common.nginx.conf
 else
    echo "ALLOWED_HOSTS undefined, exiting"
    exit 1
