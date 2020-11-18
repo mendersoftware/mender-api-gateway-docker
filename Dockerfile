@@ -20,6 +20,7 @@ COPY non-ssl.nginx.conf /usr/local/openresty/nginx/conf/non-ssl.nginx.conf
 # create placeholder dir where they'll be linked
 COPY tenantadm.nginx.conf /usr/local/openresty/nginx/conf/tenantadm.nginx.conf
 COPY auditlogs.nginx.conf /usr/local/openresty/nginx/conf/auditlogs.nginx.conf
+COPY deviceconnect.nginx.conf /usr/local/openresty/nginx/conf/deviceconnect.nginx.conf
 
 RUN mkdir -p /usr/local/openresty/nginx/conf/optional/endpoints
 
