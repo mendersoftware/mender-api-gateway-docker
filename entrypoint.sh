@@ -70,6 +70,11 @@ if [ -n "$HAVE_DEVICECONNECT" ]; then
        /usr/local/openresty/nginx/conf/optional/endpoints/deviceconnect.nginx.conf
 fi
 
+if [ -n "$HAVE_DEVICECONFIG" ]; then
+    ln -sf /usr/local/openresty/nginx/conf/deviceconfig.nginx.conf \
+       /usr/local/openresty/nginx/conf/optional/endpoints/deviceconfig.nginx.conf
+fi
+
 # Rate limits - disabled by default
 if [ -n "$RATE_LIMIT_GLOBAL_RATE" ] && [ $RATE_LIMIT_GLOBAL_RATE -gt 0 ]; then
     sed -i -e "s/[@]RATE_LIMIT_GLOBAL_RATE[@]/${RATE_LIMIT_GLOBAL_RATE}r\/s/" /usr/local/openresty/nginx/conf/nginx.conf
